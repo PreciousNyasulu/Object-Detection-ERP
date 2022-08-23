@@ -1,7 +1,8 @@
 import serial
-import requests # importing the requests library
+import time
+import requests #importing the requests library
 
-ser = serial.Serial("COM11", 9600)
+ser = serial.Serial("COM3", 9600)
 while True:
      cc=str(ser.readline())
      _Value =cc[2:][:-5]
@@ -9,6 +10,7 @@ while True:
 
      if(int(_Value) <= 10):
           # defining the api-endpoint 
+          time.sleep(2);
           API_ENDPOINT = "http://localhost:8000/api/Tickets/Update"
           
           # data to be sent to api
@@ -22,4 +24,3 @@ while True:
           print(r)
           # extracting response text 
           # pastebin_url = r.text
-          # print("The pastebin URL is:%s"%pastebin_url)
