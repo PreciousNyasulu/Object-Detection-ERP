@@ -10,7 +10,7 @@ while True:
 
      if(int(_Value) <= 10):
           # defining the api-endpoint 
-          time.sleep(2);
+          # time.sleep(2);
           API_ENDPOINT = "http://localhost:8000/api/Tickets/Update"
           
           # data to be sent to api
