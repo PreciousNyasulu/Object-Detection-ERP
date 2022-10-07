@@ -1,15 +1,17 @@
 int trigPin = 12;
 int echoPin = 11;
 int led = 7;
-
+const int buzzer = 8; //buzzer to arduino pin 8
 
 void setup() {
+// setup code for the buzzer
+ pinMode(buzzer, OUTPUT); // Set buzzer - pin 8 as an output
+ 
+//  setup code fot the ultrasonic sensor 
   Serial.begin(9600);
   pinMode(led, OUTPUT);
   pinMode(trigPin, OUTPUT);
-  pinMode(echoPin, INPUT);
-  // put your setup code here, to run once:
-
+  pinMode(echoPin, INPUT);  
 }
 
 void loop() {
@@ -22,14 +24,18 @@ void loop() {
 
   Serial.println(distance);
 //  Serial.println("CM");
-  delay(3000);
+//  delay(3000);
 
   if ((distance <= 10))
   {
     digitalWrite(led, HIGH);
+    
+    tone(buzzer, 1000); // Send 1KHz sound signal... AKA the buzzer will go off
   }
-  else if (distance > 10)
+  else
   {
     digitalWrite(led, LOW);
+    
+    noTone(buzzer);     // Stop sound... AKA the buzzer will stop
   }
 }
