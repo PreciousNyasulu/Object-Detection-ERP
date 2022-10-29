@@ -17,7 +17,7 @@ async def main():
 while True:
     cc=str(ser.readline())
     _Value =cc[2:][:-5]
-    print(_Value + "CM")
+    print(_Value , "CM")
 
     if(int(_Value) <= 10):
         loop = asyncio.get_event_loop()
